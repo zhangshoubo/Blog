@@ -8,7 +8,7 @@ import com.lanou.bean.User;
 public interface UserService{
     void insertUser(User user);
 
-    void checkUser(User user);
+    User checkUser(User user);
 
     boolean checkUserName(String userName);
 

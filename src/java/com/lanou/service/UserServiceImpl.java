@@ -15,13 +15,17 @@ public class UserServiceImpl implements UserService {
     private UserMapper mapper;
 
     public void insertUser(User user) {
+
         mapper.insertUser(user);
     }
 
-    public void checkUser(User user) {
+    public User checkUser(User user) {
 
-        mapper.checkUser(user);
+        User checkUser = mapper.checkUser(user);
+        return checkUser;
+
     }
+
 
     public boolean checkUserName(String userName) {
         User user=new User();

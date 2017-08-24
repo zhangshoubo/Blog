@@ -16,8 +16,8 @@
         INSERT INTO b_user VALUES (NULL ,#{name},#{password},#{level},#{des},#{tel},#{address})
 
     </insert>
-    <select id="checkUser" resultMap="UserMap">
-        SELECT #{name} #{password} from b_user where name=#{name} ,password=#{password}
+    <select id="checkUser"  resultMap="UserMap">
+        SELECT * from b_user where name=#{name} and password=#{password}
     </select>
 
     <select id="checkUserName" resultType="integer" parameterType="String">

@@ -5,7 +5,7 @@
   Time: 下午3:46
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>Title</title>
@@ -44,6 +44,7 @@
                 <button type="submit" class="btn btn-default">提交</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
+                <li><span>欢迎登陆: ${sessionScope.userinfo.name}</span></li>
                 <li><a href="/register" >注册</a></li>
                 <li><a href="/login">登录</a></li>
             </ul>

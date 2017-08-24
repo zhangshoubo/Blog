@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form class="form-signin" id="logform" method="post" action="${pageContext.request.contextPath}/user/login">
+            <form class="form-signin" id="logform" method="post">
                 <h2 class="form-signin-heading">请登录 </h2>
                 <label for="name" class="sr-only"> Email address</label> <input
                     type="email" name="name" id="name" class="form-control"
@@ -35,11 +35,10 @@
                         记住密码
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="button" id="btn">登录
+                <button class="btn btn-lg btn-primary btn-block"
+                        type="button" id="btn" onclick="login()">登录
                 </button>
-
-                <button class="btn btn-default" type="button"
-                        data-dismiss="modal" id="regist"><a href="/login" ></a>注册</button>
+                <span id="login"></span>
             </form>
         </div>
         <div class="col-md-4"></div>
@@ -47,17 +46,24 @@
 </div>
 </body>
 <script>
-    $("#btn").click(function () {
+    function login() {
         $.post(
             "/loginUser",
             {
-                name:$("#name").val(),
-                password:$("#password").val()
+                name: $("#name").val(),
+                password: $("#password").val()
             },
             function (result) {
-                window.location.reload()
+                if (result=="yes"){
+                    $("#login").html("登录成功!")
+                    window.location.href="/jumpindex"
+                }else {
+                    $("#login").html("登录失败");
+                    window.location.href="/jumplogin"
+                }
             })
-        })
+    }
+
 
 
 

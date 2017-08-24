@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
     void  insertUser(User user);
-    void checkUser(User user);
+    User checkUser(User user);
 
     int checkUserName(User user);
 

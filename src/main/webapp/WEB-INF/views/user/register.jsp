@@ -56,10 +56,12 @@
                                     <label> <input type="checkbox" /> 记住密码
                                     </label>
                                 </div>
+
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-default" type="button" id="btn" onclick="reg()">注册</button>
+                            <span id="login"></span>
 
                         </div>
 
@@ -70,27 +72,10 @@
 </body>
 
 <script>
-//    $("#btn").click(function () {
-//        $.ajax({
-//            url: "/regist",
-//            type: "get",
-//            data: {
-//                name: $("#name").val(),
-//                password: $("#password").val(),
-//                tel: $("#tel").val(),
-//                address: $("#address").val()
-//
-//            },
-//            success: function (result) {
-//                alert(result)
-//            }
-//
-//        })
-//    })
-    $(document).ready(
-        function() {
-            //验证用户名是否可用
-            $("#name").blur(function () {
+$(document).ready(
+    function () {
+        //验证用户名是否可用
+        $("#name").blur(function () {
                 $.post(
                     "/checkUserName",
                     {
@@ -106,26 +91,27 @@
                         }
                     });
             })
-
-            function reg() {
-                $.post(
-                    "/reg",
-                    $('#regForm').serialize(),
-                    function (result) {
-                    $('#regFormModal').modal('hide');
-                    if (result.reg == "yes") {
-                        $("#msgTitle").html("注册成功");
-                        $("#msgBody").html("恭喜您，注册成功");
-                        $("#msgModal").modal();
-                    }
-                    else {
-                        $("#msgTitle").html("注册失败");
-                        $("#msgBody").html("对不起，注册失败");
-                        $("#msgModal").modal();
-                    }
-                })
+        })
+function reg() {
+    $.post(
+        "/reg",
+        {
+            name: $("#name").val(),
+            password: $("#password").val(),
+            tel: $("#tel").val(),
+            address: $("#address").val()
+        },
+        function (result) {
+            if (result == "yes") {
+                $("#login").html("注册成功");
+                window.location.href="/jumplogin"
+            }
+            else {
+                $("#login").html("注册失败");
+                window.location.href="/umpregister"
             }
         })
+}
 
 
 
