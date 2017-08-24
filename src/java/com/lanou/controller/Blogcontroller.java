@@ -21,6 +21,7 @@ public class Blogcontroller {
     @ResponseBody
     public Blog selectById(Blog blog){
         Blog blog1 = service.selectById(blog);
+        System.out.println(blog1);
         return blog1;
 
     }
