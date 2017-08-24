@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.UserMapper">
+
+    <resultMap id="UserMap" type="User">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="tel" property="tel"/>
+        <result column="address" property="address"/>
+    </resultMap>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO b_user VALUES (NULL ,#{name},#{password},#{level},#{des},#{tel},#{address})
+
+    </insert>
+    <select id="checkUser" resultMap="UserMap">
+        SELECT #{name} #{password} from b_user where name=#{name} ,password=#{password}
+    </select>
+
+    <select id="checkUserName" resultType="integer" parameterType="String">
+        SELECT count(*) FROM b_user WHERE name=#{name}
+    </select>
+
+    <insert id="regUser" useGeneratedKeys="true" keyProperty="id">
+         INSERT INTO b_user VALUES (NULL ,#{name},#{password},#{level},#{des},#{tel},#{address})
+    </insert>
+
+
+
+</mapper>
