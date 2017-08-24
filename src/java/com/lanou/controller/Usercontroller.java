@@ -20,7 +20,7 @@ import java.util.Map;
  * Created by dllo on 17/8/23.
  */
 @Controller
-public class controller {
+public class Usercontroller {
 
     @Resource
     private UserService service;
@@ -61,8 +61,6 @@ public class controller {
 //        service.insertUser(user);
 //        return "redirct:/user/login";
 //    }
-
-
     //注册
     @RequestMapping(value = "/reg",method = RequestMethod.POST)
     @ResponseBody
@@ -73,10 +71,8 @@ public class controller {
         System.out.println(f);
         if(f){
             map.put("Msg", "yes");
-            return "yes";}
-//        }else{
-//            map.put("Msg", "no");
-//        }
+            return "yes";
+        }
        return "no";
     }
 
@@ -105,5 +101,8 @@ public class controller {
         map.put("Msg",f);
         return map;
     }
+
+
+
 
     }
