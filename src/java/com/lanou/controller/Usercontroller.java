@@ -26,7 +26,7 @@ public class Usercontroller {
     private UserService service;
     @RequestMapping(value = "/")
     public String frontPage(){
-        return "Main";
+        return "user/login";
     }
 
     @RequestMapping(value = "/login")
@@ -52,6 +52,12 @@ public class Usercontroller {
     @RequestMapping(value = "/jumpregister")
     public String jumpregister(){
         return "user/register";
+    }
+
+    @RequestMapping(value = "/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "user/login";
     }
 
     //注册
@@ -81,9 +87,9 @@ public class Usercontroller {
     @ResponseBody
     public String  loginUser(HttpServletRequest request, User user){
         System.out.println(user);
-        User checkUser = service.checkUser(user);
-        request.getSession().setAttribute("userinfo",checkUser);
-        if (checkUser.getName()==null){
+        User user1 = service.checkUser(user);
+        request.getSession().setAttribute("userinfo",user1);
+        if (user1.getName().isEmpty()&&user.getName().isEmpty()){
             return "no";
         }else {
             return "yes";

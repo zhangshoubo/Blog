@@ -38,6 +38,10 @@
                 <button class="btn btn-lg btn-primary btn-block"
                         type="button" id="btn" onclick="login()">登录
                 </button>
+                <button class="btn btn-lg btn-primary btn-block"
+                        type="button" id="regist" onclick="reg()">注册
+                </button>
+
                 <span id="login"></span>
             </form>
         </div>
@@ -59,10 +63,19 @@
                     window.location.href="/jumpindex"
                 }else {
                     $("#login").html("登录失败");
-                    window.location.href="/jumplogin"
+//                    window.location.href="/jumplogin"
                 }
             })
     }
+
+    //跳转页面
+    function reg() {
+        window.location.href="/jumpregister"
+    }
+
+
+
+
 
 
 
